@@ -1,0 +1,4 @@
+add_library(thrustered_vehicle_motioncontroller OBJECT tinyxml2/tinyxml2.cpp tinyxml2/tinyxml2.h thrustered_vehicle_motion_controller.cpp PID-Controller/PID_controller.cpp thrusters_controller/thrusters_controller.cpp thrusters_controller/thruster_variables.cpp) 
+find_package(pybind11 REQUIRED)
+pybind11_add_module(motion_controller thrustered_vehicle_motion_controller.cpp PID-Controller/PID_controller.cpp thrusters_controller/thrusters_controller.cpp motion_controller_pybind.cpp thrusters_controller/thruster_variables.cpp)
+target_link_libraries(motion_controller PRIVATE ${catkin_LIBRARIES})
